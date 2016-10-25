@@ -18,6 +18,8 @@ if [ ! -z $OPENSHIFT_BUILD_NAMESPACE ] && [ -f /var/run/secrets/kubernetes.io/se
   done
   IPS=${IPS:0:-2}]
   echo $IPS
+  sed -i "s/# discovery.zen.ping.unicast.hosts: [\"host1\", \"host2\"]/$IPS/g" /etc/elasticsearch/elasticsearch.yml
+
 
   elasticsearch -Des.node.master=$node_master \
       -Des.node.data=$node_data \
