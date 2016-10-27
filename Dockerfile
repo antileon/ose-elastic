@@ -26,16 +26,14 @@ chmod +x /bin/elasticsearch && \
 chmod -R 777 /usr/share/elasticsearch && \
 chmod -R 777 /etc/elasticsearch
 
-COPY container-files /
-
-ENV node_master true
-ENV node_data true
-ENV http_enabled true
-
-EXPOSE 9200 9300
-
 RUN /usr/share/elasticsearch/bin/plugin install mobz/elasticsearch-head && \
     /usr/share/elasticsearch/bin/plugin install lmenezes/elasticsearch-kopf/v2.1.2
+
+COPY container-files /
+
+ENV NODE_MASTER=true NODE_DATA=true NODE_HTTP=true CLUSTER_NAME=elasticsearch
+
+EXPOSE 9200 9300
 
 USER 1001
 
