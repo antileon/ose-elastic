@@ -5,7 +5,7 @@ sed -i 's/# network.host: 192.168.0.1/network.host: 0.0.0.0/g' /etc/elasticsearc
 if [ ! -z $CLUSTER_NAME ]; then
   echo "Changing Cluster Name to $CLUSTER_NAME"
   sed -i 's/# cluster.name: my-application/# cluster.name: see bottom of file!/g' /etc/elasticsearch/elasticsearch.yml
-  echo $CLUSTER_NAME >> /etc/elasticsearch/elasticsearch.yml
+  echo "cluster.name: $CLUSTER_NAME" >> /etc/elasticsearch/elasticsearch.yml
 fi
 
 
