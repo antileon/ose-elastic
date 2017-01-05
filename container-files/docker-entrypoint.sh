@@ -30,9 +30,7 @@ if [ ! -z $OPENSHIFT_BUILD_NAMESPACE ] && [ -f /var/run/secrets/kubernetes.io/se
   echo "discovery.zen.ping.unicast.hosts: $IPS" >> /etc/elasticsearch/elasticsearch.yml
   # END SERVICE DISCOVERY ##########
 
-  elasticsearch -Des.node.master=$NODE_MASTER \
-      -Des.node.data=$NODE_DATA \
-      -Des.http.enabled=$NODE_HTTP
+  elasticsearch
 
 else
   # Not on OpenShift -> Run in Multicast Mode

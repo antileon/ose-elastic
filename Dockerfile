@@ -29,7 +29,6 @@ chmod -R 777 /etc/elasticsearch
 COPY container-files /
 
 ENV NODE_MASTER=true NODE_DATA=true NODE_HTTP=true CLUSTER_NAME=elasticsearch
-ENV ES_HEAP_SIZE=512m
 
 EXPOSE 9200 9300
 
